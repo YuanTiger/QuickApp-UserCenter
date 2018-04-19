@@ -1,0 +1,109 @@
+<template>
+    <!---->
+    <div class="container">
+        <div class="container_top">
+            <stack class="container_user_photo">
+                <image src="{{user.userPhoto}}" class="user_photo"></image>
+                <image src="../res/mipmap/ic_sex_man.png" class="user_sex" if="user.sex ==0"></image>
+                <image src="../res/mipmap/ic_sex_woman.png" class="user_sex" if="user.sex ==1"></image>
+            </stack>
+            <text class="user_name">{{user.userName}}</text>
+            <text class="user_id">{{user.userId}}</text>
+
+        </div>
+        <div for="item in pageList" class="container_bottom">
+            <div class="item" onclick="jumpPage(item.id)">
+
+                <image src="{{item.icon}}" class="item_icon"></image>
+
+                <text class="item_title">{{item.title}}</text>
+
+
+                <text class="item_bubble" show="{{item.bubble>0}}">{{item.bubble}}</text>
+
+                <image src="../res/mipmap/ic_enter.png" class="item_arrow"></image>
+            </div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+</template>
+
+<style lang="less">
+    @import "../res/less/base.less";
+    @import "../res/less/UserCenter/index.less";
+
+</style>
+
+<script>
+    //路由
+    import router from '@system.router'
+    export default {
+        data: {
+
+            user: {
+                userName: "YuanTiger",
+                userId: "888888",
+                sex: 0,
+                userPhoto: "../res/mipmap/icon_photo.jpeg",
+            },
+            //设置页条目
+            pageList: [
+                {
+                    title: "My Friends",
+                    icon: "../res/mipmap/icon_friend.png",
+                    id: 101
+                },
+                {
+                    title: "My Star",
+                    icon: "../res/mipmap/icon_follow.png",
+                    id: 102
+                },
+                {
+                    title: "History",
+                    icon: "../res/mipmap/ic_history.png",
+                    bubble: 5,
+                    id: 103
+                },
+                {
+                    title: "Recharge",
+                    icon: "../res/mipmap/icon_recharge_other.png",
+                    id: 104
+                },
+                {
+                    title: "Setting",
+                    icon: "../res/mipmap/icon_set.png",
+                    id: 105
+                },
+                {
+                    title: "Setting",
+                    icon: "../res/mipmap/icon_set.png",
+                    id: 105
+                },
+                {
+                    title: "Setting",
+                    icon: "../res/mipmap/icon_set.png",
+                    id: 105
+                }
+            ],
+
+
+        },
+        /**
+         * 当用户点击菜单按钮时触发，调用app中定义的方法showMenu
+         * 注意：使用加载器测试`创建桌面快捷方式`功能时，请先在`系统设置`中打开`应用加载器`的`桌面快捷方式`权限
+         */
+        onMenuPress() {
+            this.$app.showMenu()
+        },
+        /**页面跳转**/
+        jumpPage(id) {
+            if (id == 101) {
+                router.push({
+                    uri: 'MyFriend',
+                })
+            }
+
+        }
+    }
+</script>

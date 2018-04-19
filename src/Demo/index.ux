@@ -1,0 +1,84 @@
+<template>
+    <!-- template里只能有一个根节点 -->
+    <div class="demo-page">
+        <text class="title">欢迎打开{{title}}</text>
+        <!-- 点击跳转详情页 -->
+        <input class="btn" type="button" value="跳转到详情页" onclick="routeDetail">
+    </div>
+</template>
+
+<style lang="less">
+
+</style>
+
+<script>
+    import router from '@system.router'
+
+    export default {
+        data: {
+            title: 'dsadsadasdasdasddiao',
+            //生命周期列表
+            lcList: [],
+        },
+        routeDetail() {
+            // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
+            router.push({
+            })
+        },
+
+        //表示VM的数据(events，props，data)已经准备好
+        onInit() {
+            this.$page.setTitleBar({text: 'onInit'});
+
+            this.lcList.push('onInit');
+
+            console.info('触发：onInit()');
+        },
+        //表示VM的模块已经编译完成，可以获取DOM节点
+        onReady() {
+
+            this.lcList.push('onReady');
+
+            console.info('触发：onReady()');
+        },
+        //表示页面处于前台
+        onShow() {
+            this.$page.setTitleBar({text: 'onShow'});
+
+            this.lcList.push('onShow');
+
+            console.info("触发：onShow()");
+        },
+        //表示页面被隐藏了
+        //关于页面的当前状态，可用VM的$visible属性：true表示显示状态，false表示隐藏状态
+        onHide() {
+            this.lcList.push("onHide");
+
+            console.info("触发：onHide()");
+        },
+
+        //页面被销毁时调用
+        //页面被销毁的原因有：1、从当前页返回上一页，2、打开页面太多，自动销毁，避免资源浪费
+        //判断页面是否销毁，可以使用VM的$valid属性：true表示存在，false表示销毁
+        onDestroy() {
+            this.lcList.push("onDestroy");
+
+            console.info("触发：onDestroy()")
+        },
+        //返回时调用，不管是实体按键，还是左上角返回等调用返回API的时候
+        //拥有返回值，返回true表示不返回，自己处理业务逻辑，最后调用返回API:router.back()
+        //返回false则遵循系统逻辑，返回上一页
+        onBackPress() {
+            this.lcList.push("onBackPress");
+            console.info("触发：onBackPress");
+        },
+        //当使用原生顶部标题栏时，可以通过清单文件中的menu属性配置是否显示右上角的菜单
+        onMenuPress() {
+            this.lcList.push("onMenuPress");
+
+            console.info("触发：onMenuPress()");
+        },
+
+
+    }
+</script>

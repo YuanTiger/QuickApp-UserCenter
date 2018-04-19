@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.friend_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.friend_list .item_friend {
+  height: 56px;
+  align-items: center;
+}
+.friend_list .item_friend .user_photo {
+  width: 40px;
+  height: 40px;
+  margin-left: 16px;
+  resize-mode: stretch;
+  border-radius: 40px;
+}
+.friend_list .item_friend .sex_age_info {
+  width: 26px;
+  height: 12px;
+  align-items: center;
+  margin-left: 12px;
+  border-radius: 4px;
+}
+.friend_list .item_friend .sex_age_info .user_sex {
+  width: 8px;
+  height: 8px;
+  margin-left: 2px;
+  resize-mode: stretch;
+}
+.friend_list .item_friend .sex_age_info .user_age {
+  color: #ffffff;
+  font-size: 10px;
+  margin-left: 2px;
+  line-height: 12px;
+}
+.friend_list .item_friend .user_man {
+  background-color: #5D9CEC;
+}
+.friend_list .item_friend .user_woman {
+  background-color: #FF82AE;
+}
+.friend_list .item_friend .user_name {
+  width: 228px;
+  font-size: 16px;
+  color: #242323;
+  margin-left: 6px;
+}
+.friend_list .item_friend .user_state {
+  margin-right: 16px;
+  width: 20px;
+  height: 20px;
+}
+.friend_list .line {
+  background-color: #cccccc;
+  height: 1px;
+  width: 100%;
+  margin-left: 52px;
+}
