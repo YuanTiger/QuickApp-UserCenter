@@ -12,7 +12,7 @@
 
         </div>
         <div for="item in pageList" class="container_bottom">
-            <div class="item" onclick="jumpPage(item.id)">
+            <div class="item" onclick="toPage(item.id)">
 
                 <image src="{{item.icon}}" class="item_icon"></image>
 
@@ -38,6 +38,7 @@
 <script>
     //路由
     import router from '@system.router'
+
     export default {
         data: {
 
@@ -84,10 +85,66 @@
                     title: "Setting",
                     icon: "../res/mipmap/icon_set.png",
                     id: 105
+                },
+                {
+                    title: "Setting",
+                    icon: "../res/mipmap/icon_set.png",
+                    id: 105
+                },
+                {
+                    title: "Setting",
+                    icon: "../res/mipmap/icon_set.png",
+                    id: 105
+                },
+                {
+                    title: "Setting",
+                    icon: "../res/mipmap/icon_set.png",
+                    id: 105
+                },
+                {
+                    title: "Setting",
+                    icon: "../res/mipmap/icon_set.png",
+                    id: 105
                 }
             ],
 
 
+        },
+
+        //表示VM的数据(events，props，data)已经准备好
+        onInit() {
+            console.info('触发：onInit()');
+        },
+        //表示VM的模块已经编译完成，可以获取DOM节点
+        onReady() {
+            console.info('触发：onReady()');
+        },
+        //表示页面处于前台
+        onShow() {
+            console.info("触发：onShow()");
+        },
+        //表示页面被隐藏了
+        //关于页面的当前状态，可用VM的$visible属性：true表示显示状态，false表示隐藏状态
+        onHide() {
+            console.info("触发：onHide()");
+        },
+
+        //页面被销毁时调用
+        //页面被销毁的原因有：1、从当前页返回上一页，2、打开页面太多，自动销毁，避免资源浪费
+        //判断页面是否销毁，可以使用VM的$valid属性：true表示存在，false表示销毁
+        onDestroy() {
+            console.info("触发：onDestroy()");
+
+        },
+        //返回时调用，不管是实体按键，还是左上角返回等调用返回API的时候
+        //拥有返回值，返回true表示不返回，自己处理业务逻辑，最后调用返回API:router.back()
+        //返回false则遵循系统逻辑，返回上一页
+        onBackPress() {
+            console.info("触发：onBackPress");
+        },
+        //当使用原生顶部标题栏时，可以通过清单文件中的menu属性配置是否显示右上角的菜单
+        onMenuPress() {
+            console.info("触发：onMenuPress()");
         },
         /**
          * 当用户点击菜单按钮时触发，调用app中定义的方法showMenu
@@ -97,12 +154,22 @@
             this.$app.showMenu()
         },
         /**页面跳转**/
-        jumpPage(id) {
+        toPage(id) {
+            var page;
+            //判断跳转页面
             if (id == 101) {
-                router.push({
-                    uri: 'MyFriend',
-                })
+                page = 'MyFriend';
+
+            } else if (id == 104) {
+                page = 'Recharge';
             }
+            //进行跳转
+            if(page == null){
+                return;
+            }
+            router.push({
+                uri: page,
+            })
 
         }
     }

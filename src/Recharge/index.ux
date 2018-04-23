@@ -1,0 +1,120 @@
+<template>
+    <!---->
+    <div class="container">
+        <!--自定义ToolBar-->
+        <div class="toolbar">
+            <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
+            <text class="toolbar_title">Recharge</text>
+        </div>
+        <div class="top_money_con">
+            <text class="top_money_text">You currently own:</text>
+            <image src="../res/mipmap/ic_money.png" class="top_money_img"></image>
+            <text class="top_money__number_text">99999</text>
+        </div>
+
+        <div class="list_con" show="friendList.length>0">
+            <stack class="list" for="item in pageData">
+                <stack class="item">
+                    <text class="old_price" if="item.oldPrice > 0">${{item.oldPrice}}</text>
+                    <image src="{{item.src}}" class="item_img"></image>
+                    <image src="../res/mipmap/ic_money.png" class="item_money_ic"></image>
+                    <text class="recharge_number">{{item.rechargeNumber}}</text>
+                    <text class="discount_price">${{item.discountPrice}}</text>
+                </stack>
+                <image src="../res/mipmap/ic_first_recharge.png" class="badge" if="item.type==1"></image>
+            </stack>
+
+
+        </div>
+    </div>
+
+</template>
+
+<style lang="less">
+    @import "../res/less/base.less";
+    @import "../res/less/Recharge/index.less";
+
+
+</style>
+
+<script>
+    //路由
+    import router from '@system.router'
+    //Toast、Dialog
+    import prompt from '@system.prompt'
+
+    export default {
+        data: {
+
+            //好友列表数据
+            pageData: [
+                {
+                    id: "1001",
+                    oldPrice: 12.99,
+                    rechargeNumber: 1000,
+                    discountPrice: 9.99,
+                    type: 1,
+                    src: "../res/mipmap/ic_money_0.png"
+                },
+                {
+                    id: "1002",
+                    oldPrice: 25.99,
+                    rechargeNumber: 2500,
+                    discountPrice: 19.99,
+                    type: 2,
+                    src: "../res/mipmap/ic_money_1.png"
+                },
+                {
+                    id: "1003",
+                    oldPrice: 0,
+                    rechargeNumber: 4000,
+                    discountPrice: 29.99,
+                    type: 0,
+                    src: "../res/mipmap/ic_money_2.png"
+                },
+                {
+                    id: "1004",
+                    oldPrice: 0,
+                    rechargeNumber: 6000,
+                    discountPrice: 39.99,
+                    type: 2,
+                    src: "../res/mipmap/ic_money_3.png"
+                },
+                {
+                    id: "1005",
+                    oldPrice: 69.99,
+                    rechargeNumber: 10000,
+                    discountPrice: 55.99,
+                    type: 1,
+                    src: "../res/mipmap/ic_money_4.png"
+                }, {
+                    id: "1006",
+                    oldPrice: 188.99,
+                    rechargeNumber: 20000,
+                    discountPrice: 119.99,
+                    type: 1,
+                    src: "../res/mipmap/ic_money_5.png"
+                }
+
+            ],
+
+        },
+        /**
+         * 当用户点击菜单按钮时触发，调用app中定义的方法showMenu
+         * 注意：使用加载器测试`创建桌面快捷方式`功能时，请先在`系统设置`中打开`应用加载器`的`桌面快捷方式`权限
+         */
+        onMenuPress() {
+            this.$app.showMenu()
+        },
+        /**页面跳转**/
+        toUserDetail(id) {
+            prompt.showToast({
+                message: id
+            })
+        },
+        /**回退上一级**/
+        goBackPage() {
+            router.back()
+        }
+    }
+</script>

@@ -1,90 +1,82 @@
-//Less语法，可以嵌套书写CSS：https://less.bootcss.com/
-//Flex布局：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
-.container {
-  display: flex;
+//用户信息区域
+.container_top {
+  background-color: @baseColor;
+  height: 244px;
+  width: 100%;
+  align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  width: 100%;
 
-  //用户信息区域
-  .container_top {
-    background-color: @baseColor;
-    height: 244px;
-    width: 100%;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    .user_photo {
-      width: 96px;
-      height: 96px;
-      border-radius: 96px;
-      resize-mode: stretch;
-      margin-top: 40px;
-    }
-
-    .user_sex {
-      margin-top: 121px;
-      resize-mode: stretch;
-      width: 15px;
-      height: 15px;
-      margin-left: 75px;
-    }
-
-    .user_name {
-      font-size: 24px;
-      color: #FFFFFF;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .user_id {
-      font-size: 14px;
-      margin-top: 5px;
-      color: #FFFFFF;
-    }
-
+  .user_photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 96px;
+    resize-mode: stretch;
+    margin-top: 40px;
   }
-  //功能跳转区域
-  .container_bottom {
-    .item {
+
+  .user_sex {
+    margin-top: 121px;
+    resize-mode: stretch;
+    width: 15px;
+    height: 15px;
+    margin-left: 75px;
+  }
+
+  .user_name {
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .user_id {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #FFFFFF;
+  }
+
+}
+
+//功能跳转区域
+.container_bottom {
+  .item {
+    text-align: center;
+    height: 64px;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+
+    .item_icon {
+      width: 24px;
+      height: 24px;
+      margin-top: 20px;
+      margin-left: 24px;
+    }
+
+    .item_title {
+      color: @baseFontColor;
+      font-size: 16px;
+      width: 264px;
+      margin-left: 12px;
+    }
+    .item_bubble {
+      background-color: @baseColor;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      margin-top: 22px;
       text-align: center;
-      height: 64px;
-      width: 100%;
-      flex-direction: row;
-      display: flex;
-      justify-content: space-between;
-
-      .item_icon {
-        width: 24px;
-        height: 24px;
-        margin-top: 20px;
-        margin-left: 24px;
-      }
-
-      .item_title {
-        color: @baseFontColor;
-        font-size: 16px;
-        width: 264px;
-        margin-left: 12px;
-      }
-      .item_bubble {
-        background-color: @baseColor;
-        width: 20px;
-        height: 20px;
-        border-radius: 10px;
-        margin-top: 22px;
-        text-align: center;
-        margin-right: 5px;
-        color: #ffffff;
-        font-size: 12px;
-      }
-      .item_arrow {
-        margin-right: 16px;
-        margin-top: 22px;
-        width: 20px;
-        height: 20px;
-      }
+      margin-right: 5px;
+      color: #ffffff;
+      font-size: 12px;
+    }
+    .item_arrow {
+      margin-right: 16px;
+      margin-top: 22px;
+      width: 20px;
+      height: 20px;
     }
   }
 }
