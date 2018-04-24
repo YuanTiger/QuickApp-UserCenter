@@ -1,0 +1,73 @@
+
+.refresh {
+  display: flex;
+  flex-direction: column;
+  progress-color: @baseColor;
+  .friend_list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .item_friend {
+      height: 56px;
+      align-items: center;
+
+      .user_photo {
+        width: 40px;
+        height: 40px;
+        margin-left: 16px;
+        resize-mode: stretch;
+        border-radius: 40px;
+      }
+
+      .sex_age_info {
+        width: 26px;
+        height: 12px;
+        align-items: center;
+        margin-left: 12px;
+        border-radius: 4px;
+        .user_sex {
+          width: 8px;
+          height: 8px;
+          margin-left: 2px;
+          resize-mode: stretch;
+        }
+        .user_age {
+          color: #ffffff;
+          font-size: 10px;
+          margin-left: 2px;
+          line-height: 12px;
+        }
+      }
+
+      .user_man {
+        background-color: #5D9CEC;
+      }
+      .user_woman {
+        background-color: #FF82AE;
+      }
+
+      .user_name {
+        width: 228px;
+        font-size: 16px;
+        color: #242323;
+        margin-left: 6px;
+      }
+      .user_state {
+        margin-right: 16px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .line {
+      background-color: #cccccc;
+      height: 1px;
+      width: 100%;
+      margin-left: 52px;
+    }
+  }
+}
+
+
+.item_friend:active {
+  background-color: #cccccc;
+}

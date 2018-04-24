@@ -61,7 +61,7 @@
                     id: 102
                 },
                 {
-                    title: "History",
+                    title: "Recent Visitors",
                     icon: "../res/mipmap/ic_history.png",
                     bubble: 5,
                     id: 103
@@ -159,7 +159,11 @@
             //判断跳转页面
             if (id == 101) {
                 page = 'MyFriend';
-            } else if (id == 104) {
+            } else if(id == 102){
+                page = 'MyStar';
+            }else if (id == 103) {
+                page = 'RecentVisitors';
+            }else if (id == 104) {
                 page = 'Recharge';
             } else if (id == 105) {
                 page = 'Setting';

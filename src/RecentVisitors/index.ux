@@ -4,43 +4,38 @@
         <!--自定义ToolBar-->
         <div class="toolbar">
             <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
-            <text class="toolbar_title">My Friend</text>
+            <text class="toolbar_title">Recent Visitors</text>
         </div>
-        <refresh onrefresh="refreshPage(value)" refreshing="{{isRefresh}}" class="refresh">
-            <div for="user in friendList" class="friend_list" if="friendList.length>0">
-                <div class="item_friend" onclick="toUserDetail(user.userId)">
-                    <!--头像-->
-                    <image src="{{user.userPhoto}}" class="user_photo"></image>
+
+        <div class="list_con" show="friendList.length>0">
+            <div class="item" for="item in pageData">
+                <stack class="item_top">
+                    <image src="{{item.userPhoto}}" class="user_photo"></image>
+                    <text class="message_number" if="item.messageNumber > 0">{{item.messageNumber}}</text>
                     <!--男性-年龄框-->
-                    <div if="user.sex==0" class="user_man sex_age_info">
+                    <div if="item.sex==0" class="user_man sex_age_info">
                         <image src="../res/mipmap/ic_sex_man.png" class="user_sex"></image>
-                        <text class="user_age">{{user.age}}</text>
+                        <text class="user_age">{{item.age}}</text>
                     </div>
                     <!--女性-年龄框-->
-                    <div if="user.sex==1" class="user_woman sex_age_info">
+                    <div if="item.sex==1" class="user_woman sex_age_info">
                         <image src="../res/mipmap/ic_sex_woman.png" class="user_sex"></image>
-                        <text class="user_age">{{user.age}}</text>
+                        <text class="user_age">{{item.age}}</text>
                     </div>
-                    <!--用户名-->
-                    <text class="user_name">{{user.userName}}</text>
-                    <!--当前状态-->
-                    <image src="../res/mipmap/ic_enter.png" class="user_state"></image>
-                </div>
-                <!--分割线-->
-                <div class="line"></div>
+                </stack>
+                <text class="user_name">{{item.userName}}</text>
+                <text class="last_login_time">{{item.lastLoginTime}}</text>
             </div>
-            <div class="no_data" if="friendList.length<=0">
-                <image src="../res/mipmap/bg_no_data.png" class="img_no_data"></image>
-                <text class="text_no_data">NOTHING TO REPORT!</text>
-            </div>
-        </refresh>
+
+
+        </div>
     </div>
 
 </template>
 
 <style lang="less">
     @import "../res/less/base.less";
-    @import "../res/less/MyFriend/index.less";
+    @import "../res/less/RecentVisitors/index.less";
 
 
 </style>
@@ -53,13 +48,15 @@
 
     export default {
         data: {
-            isRefresh: false,
-            //好友列表数据
-            friendList: [
+
+            //最近来访列表
+            pageData: [
                 {
                     userName: "Test1",
                     userId: "123456",
                     age: 15,
+                    messageNumber: 15,
+                    lastLoginTime: "3 hours ago",
                     sex: 0,
                     userPhoto: "../res/mipmap/icon_photo.jpeg"
                 },
@@ -67,21 +64,36 @@
                     userName: "Rick",
                     age: 17,
                     userId: "443212",
+                    messageNumber: 0,
+                    lastLoginTime: "2 hours ago",
                     sex: 1,
                     userPhoto: "../res/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "Bill",
                     userId: "1233333",
+                    messageNumber: 0,
                     age: 22,
+                    lastLoginTime: "2 hours ago",
                     sex: 1,
                     userPhoto: "../res/mipmap/icon_photo.jpeg"
                 },
                 {
-                    userName: "Login",
-                    age: 25,
+                    userName: "YuanTiger",
+                    age: 24,
+                    messageNumber: 99,
+                    lastLoginTime: "0 hours ago",
                     userId: "6666666",
                     sex: 0,
+                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                },
+                {
+                    userName: "Yuan",
+                    age: 24,
+                    messageNumber: 99,
+                    lastLoginTime: "0 hours ago",
+                    userId: "6666666",
+                    sex: 1,
                     userPhoto: "../res/mipmap/icon_photo.jpeg"
                 }
             ],
@@ -103,18 +115,6 @@
         /**回退上一级**/
         goBackPage() {
             router.back()
-        },
-        refreshPage(refreshValue) {
-            this.isRefresh = true;
-            prompt.showToast({
-                message: "You try to refresh"
-            });
-            this.stopRefresh(refreshValue)
-        },
-        //停止下拉刷新的方法就是将触发下拉刷新时的参数，赋值给我们绑定的值
-        stopRefresh(refreshValue) {
-            this.isRefresh = refreshValue;
-
         }
     }
 </script>

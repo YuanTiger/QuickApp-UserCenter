@@ -4,7 +4,7 @@
         <!--自定义ToolBar-->
         <div class="toolbar">
             <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
-            <text class="toolbar_title">My Friend</text>
+            <text class="toolbar_title">My Star</text>
         </div>
         <refresh onrefresh="refreshPage(value)" refreshing="{{isRefresh}}" class="refresh">
             <div for="user in friendList" class="friend_list" if="friendList.length>0">
@@ -29,18 +29,20 @@
                 <!--分割线-->
                 <div class="line"></div>
             </div>
+
             <div class="no_data" if="friendList.length<=0">
                 <image src="../res/mipmap/bg_no_data.png" class="img_no_data"></image>
                 <text class="text_no_data">NOTHING TO REPORT!</text>
             </div>
         </refresh>
+
     </div>
 
 </template>
 
 <style lang="less">
     @import "../res/less/base.less";
-    @import "../res/less/MyFriend/index.less";
+    @import "../res/less/MyStar/index.less";
 
 
 </style>
@@ -56,34 +58,34 @@
             isRefresh: false,
             //好友列表数据
             friendList: [
-                {
-                    userName: "Test1",
-                    userId: "123456",
-                    age: 15,
-                    sex: 0,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
-                },
-                {
-                    userName: "Rick",
-                    age: 17,
-                    userId: "443212",
-                    sex: 1,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
-                },
-                {
-                    userName: "Bill",
-                    userId: "1233333",
-                    age: 22,
-                    sex: 1,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
-                },
-                {
-                    userName: "Login",
-                    age: 25,
-                    userId: "6666666",
-                    sex: 0,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
-                }
+//                {
+//                    userName: "Test1",
+//                    userId: "123456",
+//                    age: 15,
+//                    sex: 0,
+//                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+//                },
+//                {
+//                    userName: "Rick",
+//                    age: 17,
+//                    userId: "443212",
+//                    sex: 1,
+//                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+//                },
+//                {
+//                    userName: "Bill",
+//                    userId: "1233333",
+//                    age: 22,
+//                    sex: 1,
+//                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+//                },
+//                {
+//                    userName: "Login",
+//                    age: 25,
+//                    userId: "6666666",
+//                    sex: 0,
+//                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+//                }
             ],
 
         },
@@ -106,12 +108,26 @@
         },
         refreshPage(refreshValue) {
             this.isRefresh = true;
-            prompt.showToast({
-                message: "You try to refresh"
-            });
-            this.stopRefresh(refreshValue)
+            this.addData();
+            this.stopRefresh(refreshValue);
         },
-        //停止下拉刷新的方法就是将触发下拉刷新时的参数，赋值给我们绑定的值
+        /**添加数据，模拟请求**/
+        addData() {
+            //如果数据长度大于5，则再次清空
+            if (this.friendList.length > 4) {
+                this.friendList = [];
+                return;
+            }
+            this.friendList.push({
+                userName: "YuanTiger",
+                age: 25,
+                userId: "6666666",
+                sex: 0,
+                userPhoto: "../res/mipmap/icon_photo.jpeg"
+            })
+
+        },
+        /**停止下拉刷新的方法就是将触发下拉刷新时的参数，赋值给我们绑定的值**/
         stopRefresh(refreshValue) {
             this.isRefresh = refreshValue;
 

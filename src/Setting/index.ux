@@ -107,7 +107,7 @@
                         prompt.showToast({
                             message: "Clear Success！"
                         });
-                        this.pageData[2].desc = "0M";
+//                        this.pageData[2].desc = "0M";
                     }
 
 

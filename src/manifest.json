@@ -34,6 +34,12 @@
       "Recharge": {
         "component": "index"
       },
+      "MyStar": {
+        "component": "index"
+      },
+      "RecentVisitors": {
+        "component": "index"
+      },
       "Setting": {
         "component": "index"
       },
