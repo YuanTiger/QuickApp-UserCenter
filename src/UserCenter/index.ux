@@ -8,7 +8,7 @@
                 <image src="../res/mipmap/ic_sex_woman.png" class="user_sex" if="user.sex ==1"></image>
             </stack>
             <text class="user_name">{{user.userName}}</text>
-            <text class="user_id">{{user.userId}}</text>
+            <text class="user_id">ID: {{user.userId}}</text>
 
         </div>
         <div for="item in pageList" class="container_bottom">
@@ -159,12 +159,13 @@
             //判断跳转页面
             if (id == 101) {
                 page = 'MyFriend';
-
             } else if (id == 104) {
                 page = 'Recharge';
+            } else if (id == 105) {
+                page = 'Setting';
             }
             //进行跳转
-            if(page == null){
+            if (page == null) {
                 return;
             }
             router.push({

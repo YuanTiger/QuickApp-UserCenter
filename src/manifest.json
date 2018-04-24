@@ -34,6 +34,9 @@
       "Recharge": {
         "component": "index"
       },
+      "Setting": {
+        "component": "index"
+      },
       "MyFriend": {
         "component": "index"
       }

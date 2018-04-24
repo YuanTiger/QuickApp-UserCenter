@@ -1,0 +1,130 @@
+<template>
+    <!---->
+    <div class="container">
+        <!--自定义ToolBar-->
+        <div class="toolbar">
+            <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
+            <text class="toolbar_title">Setting</text>
+        </div>
+        <div class="list" show="friendList.length>0" for="item in pageData">
+            <stack class="item" onclick="toPage(item.id)">
+                <text class="item_title">{{item.text}}</text>
+                <text class="item_desc" if="item.desc != ''">{{item.desc}}</text>
+                <image src="../res/mipmap/ic_enter.png" class="item_arrow" if="item.desc == ''"></image>
+            </stack>
+
+        </div>
+        <text class="login_out" onclick="loginOut()">Login Out</text>
+    </div>
+
+</template>
+
+<style lang="less">
+    @import "../res/less/base.less";
+    @import "../res/less/Setting/index.less";
+
+
+</style>
+
+<script>
+    //路由
+    import router from '@system.router'
+    //Toast、Dialog
+    import prompt from '@system.prompt'
+
+    export default {
+        data: {
+            pageThis: "",
+            //页面数据
+            pageData: [
+                {
+                    id: "2001",
+                    text: "Account",
+                    desc: "",
+                },
+                {
+                    id: "2002",
+                    text: "Language",
+                    desc: "",
+                },
+                {
+                    id: "2003",
+                    text: "Clean Cache",
+                    desc: "125MB",
+                },
+                {
+                    id: "2004",
+                    text: "About Us",
+                    desc: "Current Version 0.0.1-dev",
+                },
+
+
+            ],
+
+        },
+        /**
+         * 当用户点击菜单按钮时触发，调用app中定义的方法showMenu
+         * 注意：使用加载器测试`创建桌面快捷方式`功能时，请先在`系统设置`中打开`应用加载器`的`桌面快捷方式`权限
+         */
+        onMenuPress() {
+            this.$app.showMenu()
+        },
+        onCreate() {
+            this.pageThis = this;
+        },
+        /**页面跳转**/
+        toPage(id) {
+            if (id == 2003) {
+                this.clearCache();
+                return;
+            }
+            prompt.showToast({
+                message: id
+            })
+        },
+        /**回退上一级**/
+        goBackPage() {
+            router.back()
+        },
+        /**清理缓存**/
+        clearCache() {
+            prompt.showDialog({
+                title: 'Confirm',
+                message: 'Are you sure to clear the cache？',
+                buttons: [
+                    {
+                        text: 'Confirm',
+                        color: '#333333'
+                    },
+                    {
+                        text: 'Cancel',
+                        color: '#ccccccc'
+                    }
+
+                ],
+                success: function (data) {
+                    if (data.index == 0) {
+                        prompt.showToast({
+                            message: "Clear Success！"
+                        });
+                        this.pageData[2].desc = "0M";
+                    }
+
+
+                },
+                cancel: function (data) {
+                    console.log('handling cancel')
+                },
+                fail: function (data, code) {
+                    console.log(`handling fail, code = ${code}`)
+                }
+            })
+        },
+        /**退出登录**/
+        loginOut() {
+            prompt.showToast({
+                message: "Login Out"
+            })
+        }
+    }
+</script>
