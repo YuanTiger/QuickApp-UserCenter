@@ -3,12 +3,12 @@
     <div class="container">
         <!--自定义ToolBar-->
         <div class="toolbar">
-            <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
+            <image src="../Common/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
             <text class="toolbar_title">Recharge</text>
         </div>
         <div class="top_money_con">
             <text class="top_money_text">You currently own:</text>
-            <image src="../res/mipmap/ic_money.png" class="top_money_img"></image>
+            <image src="../Common/mipmap/ic_money.png" class="top_money_img"></image>
             <text class="top_money__number_text">99999</text>
         </div>
 
@@ -17,11 +17,11 @@
                 <stack class="item">
                     <text class="old_price" if="item.oldPrice > 0">${{item.oldPrice}}</text>
                     <image src="{{item.src}}" class="item_img"></image>
-                    <image src="../res/mipmap/ic_money.png" class="item_money_ic"></image>
+                    <image src="../Common/mipmap/ic_money.png" class="item_money_ic"></image>
                     <text class="recharge_number">{{item.rechargeNumber}}</text>
                     <text class="discount_price">${{item.discountPrice}}</text>
                 </stack>
-                <image src="../res/mipmap/ic_first_recharge.png" class="badge" if="item.type==1"></image>
+                <image src="../Common/mipmap/ic_first_recharge.png" class="badge" if="item.type==1"></image>
             </stack>
 
 
@@ -31,8 +31,8 @@
 </template>
 
 <style lang="less">
-    @import "../res/less/base.less";
-    @import "../res/less/Recharge/index.less";
+    @import "../Common/base.less";
+    @import "index.less";
 
 
 </style>
@@ -54,7 +54,7 @@
                     rechargeNumber: 1000,
                     discountPrice: 9.99,
                     type: 1,
-                    src: "../res/mipmap/ic_money_0.png"
+                    src: "../Common/mipmap/ic_money_0.png"
                 },
                 {
                     id: "1002",
@@ -62,7 +62,7 @@
                     rechargeNumber: 2500,
                     discountPrice: 19.99,
                     type: 2,
-                    src: "../res/mipmap/ic_money_1.png"
+                    src: "../Common/mipmap/ic_money_1.png"
                 },
                 {
                     id: "1003",
@@ -70,7 +70,7 @@
                     rechargeNumber: 4000,
                     discountPrice: 29.99,
                     type: 0,
-                    src: "../res/mipmap/ic_money_2.png"
+                    src: "../Common/mipmap/ic_money_2.png"
                 },
                 {
                     id: "1004",
@@ -78,7 +78,7 @@
                     rechargeNumber: 6000,
                     discountPrice: 39.99,
                     type: 2,
-                    src: "../res/mipmap/ic_money_3.png"
+                    src: "../Common/mipmap/ic_money_3.png"
                 },
                 {
                     id: "1005",
@@ -86,14 +86,14 @@
                     rechargeNumber: 10000,
                     discountPrice: 55.99,
                     type: 1,
-                    src: "../res/mipmap/ic_money_4.png"
+                    src: "../Common/mipmap/ic_money_4.png"
                 }, {
                     id: "1006",
                     oldPrice: 188.99,
                     rechargeNumber: 20000,
                     discountPrice: 119.99,
                     type: 1,
-                    src: "../res/mipmap/ic_money_5.png"
+                    src: "../Common/mipmap/ic_money_5.png"
                 }
 
             ],

@@ -3,34 +3,37 @@
     <div class="container">
         <!--自定义ToolBar-->
         <div class="toolbar">
-            <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
+            <image src="../Common/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
             <text class="toolbar_title">My Friend</text>
         </div>
+        <!--下拉刷新、上拉加载-->
         <refresh onrefresh="refreshPage(value)" refreshing="{{isRefresh}}" class="refresh">
+            <!--数据页-->
             <div for="user in friendList" class="friend_list" if="friendList.length>0">
                 <div class="item_friend" onclick="toUserDetail(user.userId)">
                     <!--头像-->
                     <image src="{{user.userPhoto}}" class="user_photo"></image>
                     <!--男性-年龄框-->
                     <div if="user.sex==0" class="user_man sex_age_info">
-                        <image src="../res/mipmap/ic_sex_man.png" class="user_sex"></image>
+                        <image src="../Common/mipmap/ic_sex_man.png" class="user_sex"></image>
                         <text class="user_age">{{user.age}}</text>
                     </div>
                     <!--女性-年龄框-->
                     <div if="user.sex==1" class="user_woman sex_age_info">
-                        <image src="../res/mipmap/ic_sex_woman.png" class="user_sex"></image>
+                        <image src="../Common/mipmap/ic_sex_woman.png" class="user_sex"></image>
                         <text class="user_age">{{user.age}}</text>
                     </div>
                     <!--用户名-->
                     <text class="user_name">{{user.userName}}</text>
                     <!--当前状态-->
-                    <image src="../res/mipmap/ic_enter.png" class="user_state"></image>
+                    <image src="../Common/mipmap/ic_enter.png" class="user_state"></image>
                 </div>
                 <!--分割线-->
                 <div class="line"></div>
             </div>
+            <!--无数据页-->
             <div class="no_data" if="friendList.length<=0">
-                <image src="../res/mipmap/bg_no_data.png" class="img_no_data"></image>
+                <image src="../Common/mipmap/bg_no_data.png" class="img_no_data"></image>
                 <text class="text_no_data">NOTHING TO REPORT!</text>
             </div>
         </refresh>
@@ -39,8 +42,8 @@
 </template>
 
 <style lang="less">
-    @import "../res/less/base.less";
-    @import "../res/less/MyFriend/index.less";
+    @import "../Common/base.less";
+    @import "index.less";
 
 
 </style>
@@ -61,28 +64,28 @@
                     userId: "123456",
                     age: 15,
                     sex: 0,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "Rick",
                     age: 17,
                     userId: "443212",
                     sex: 1,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "Bill",
                     userId: "1233333",
                     age: 22,
                     sex: 1,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "Login",
                     age: 25,
                     userId: "6666666",
                     sex: 0,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 }
             ],
 

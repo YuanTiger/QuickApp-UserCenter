@@ -3,14 +3,14 @@
     <div class="container">
         <!--自定义ToolBar-->
         <div class="toolbar">
-            <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
+            <image src="../Common/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
             <text class="toolbar_title">Setting</text>
         </div>
         <div class="list" show="friendList.length>0" for="item in pageData">
             <stack class="item" onclick="toPage(item.id)">
                 <text class="item_title">{{item.text}}</text>
                 <text class="item_desc" if="item.desc != ''">{{item.desc}}</text>
-                <image src="../res/mipmap/ic_enter.png" class="item_arrow" if="item.desc == ''"></image>
+                <image src="../Common/mipmap/ic_enter.png" class="item_arrow" if="item.desc == ''"></image>
             </stack>
 
         </div>
@@ -20,8 +20,8 @@
 </template>
 
 <style lang="less">
-    @import "../res/less/base.less";
-    @import "../res/less/Setting/index.less";
+    @import "../Common/base.less";
+    @import "index.less";
 
 
 </style>
@@ -103,13 +103,9 @@
 
                 ],
                 success: function (data) {
-                    if (data.index == 0) {
-                        prompt.showToast({
-                            message: "Clear Success！"
-                        });
-//                        this.pageData[2].desc = "0M";
-                    }
-
+                    prompt.showToast({
+                        message: "Clear Success！"
+                    });
 
                 },
                 cancel: function (data) {
@@ -122,8 +118,33 @@
         },
         /**退出登录**/
         loginOut() {
-            prompt.showToast({
-                message: "Login Out"
+            prompt.showDialog({
+                title: 'Confirm',
+                message: 'Are you sure to Login Out？',
+                buttons: [
+                    {
+                        text: 'Confirm',
+                        color: '#333333'
+                    },
+                    {
+                        text: 'Cancel',
+                        color: '#ccccccc'
+                    }
+
+                ],
+                success: function (data) {
+                    prompt.showToast({
+                        message: "Login Out Success！"
+                    });
+                    router.back();
+
+                },
+                cancel: function (data) {
+                    console.log('handling cancel')
+                },
+                fail: function (data, code) {
+                    console.log(`handling fail, code = ${code}`)
+                }
             })
         }
     }

@@ -3,7 +3,7 @@
     <div class="container">
         <!--自定义ToolBar-->
         <div class="toolbar">
-            <image src="../res/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
+            <image src="../Common/mipmap/ic_back.png" class="toolbar_back" onclick="goBackPage()"></image>
             <text class="toolbar_title">Recent Visitors</text>
         </div>
 
@@ -14,12 +14,12 @@
                     <text class="message_number" if="item.messageNumber > 0">{{item.messageNumber}}</text>
                     <!--男性-年龄框-->
                     <div if="item.sex==0" class="user_man sex_age_info">
-                        <image src="../res/mipmap/ic_sex_man.png" class="user_sex"></image>
+                        <image src="../Common/mipmap/ic_sex_man.png" class="user_sex"></image>
                         <text class="user_age">{{item.age}}</text>
                     </div>
                     <!--女性-年龄框-->
                     <div if="item.sex==1" class="user_woman sex_age_info">
-                        <image src="../res/mipmap/ic_sex_woman.png" class="user_sex"></image>
+                        <image src="../Common/mipmap/ic_sex_woman.png" class="user_sex"></image>
                         <text class="user_age">{{item.age}}</text>
                     </div>
                 </stack>
@@ -34,8 +34,8 @@
 </template>
 
 <style lang="less">
-    @import "../res/less/base.less";
-    @import "../res/less/RecentVisitors/index.less";
+    @import "../Common/base.less";
+    @import "index.less";
 
 
 </style>
@@ -58,7 +58,7 @@
                     messageNumber: 15,
                     lastLoginTime: "3 hours ago",
                     sex: 0,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "Rick",
@@ -67,7 +67,7 @@
                     messageNumber: 0,
                     lastLoginTime: "2 hours ago",
                     sex: 1,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "Bill",
@@ -76,7 +76,7 @@
                     age: 22,
                     lastLoginTime: "2 hours ago",
                     sex: 1,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "YuanTiger",
@@ -85,7 +85,7 @@
                     lastLoginTime: "0 hours ago",
                     userId: "6666666",
                     sex: 0,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 },
                 {
                     userName: "Yuan",
@@ -94,7 +94,7 @@
                     lastLoginTime: "0 hours ago",
                     userId: "6666666",
                     sex: 1,
-                    userPhoto: "../res/mipmap/icon_photo.jpeg"
+                    userPhoto: "../Common/mipmap/icon_photo.jpeg"
                 }
             ],
 
