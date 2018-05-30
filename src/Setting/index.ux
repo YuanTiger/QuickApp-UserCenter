@@ -103,13 +103,22 @@
 
                 ],
                 success: function (data) {
-                    prompt.showToast({
-                        message: "Clear Success！"
-                    });
+                    if(data.index == 0){//清理缓存
+                        prompt.showToast({
+                            message: "Clear Success！"
+                        });
+                    }else if(data.index == 1){//取消
+                        prompt.showToast({
+                            message: "Cancel"
+                        });
+                    }
+
 
                 },
                 cancel: function (data) {
-                    console.log('handling cancel')
+                    prompt.showToast({
+                        message: "Cancel"
+                    });
                 },
                 fail: function (data, code) {
                     console.log(`handling fail, code = ${code}`)
@@ -133,14 +142,23 @@
 
                 ],
                 success: function (data) {
-                    prompt.showToast({
-                        message: "Login Out Success！"
-                    });
-                    router.back();
+                    if(data.index == 0){//清理缓存
+                        prompt.showToast({
+                            message: "Login Out Success！"
+                        });
+                        router.back();
+                    }else if(data.index == 1){//取消
+                        prompt.showToast({
+                            message: "Cancel"
+                        });
+                    }
+
 
                 },
                 cancel: function (data) {
-                    console.log('handling cancel')
+                    prompt.showToast({
+                        message: "Cancel"
+                    });
                 },
                 fail: function (data, code) {
                     console.log(`handling fail, code = ${code}`)
