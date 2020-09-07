@@ -1,6 +1,6 @@
 # 简介 #
 ### 1、效果 ###
-![具体效果](https://github.com/YuanTiger/QuickApp-UserCenter/blob/master/%E5%BF%AB%E5%BA%94%E7%94%A8GIF%E6%95%88%E6%9E%9C.gif)
+![具体效果](https://github.com/YuanTiger/QuickApp-UserCenter/blob/master/preview.gif)
 ### 2、什么是快应用 ###
 [快应用](https://www.quickapp.cn/)是由小米、中兴、华为、联想、魅族、OnePlus等十家手机厂商一起研发的一款免安装集成应用。
 现在在这十家的应用市场搜索[快应用](https://www.quickapp.cn/)，就可以看到别人开发的快应用，一点即可打开，无需下载。
